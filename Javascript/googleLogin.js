@@ -12,9 +12,10 @@ function loginWithGoogle() {
 function handleGoogleLogin() {
     // URL에서 액세스 토큰 파싱
     const urlParams = new URLSearchParams(window.location.hash.substring(1));
-    console.log(window.location.href)
     const accessToken = urlParams.get('access_token');
-    console.log('액세스 토큰:', accessToken);
+
+    // 액세스 토큰을 로컬 스토리지에 저장
+    localStorage.setItem('access_token', accessToken);
 
     // 액세스 토큰을 사용하여 사용자 정보 요청
     fetch('https://www.googleapis.com/oauth2/v1/userinfo', {
@@ -26,10 +27,7 @@ function handleGoogleLogin() {
     .then(userInfo => {
         console.log('사용자 정보:', userInfo);
         alert('구글 로그인 성공!\n사용자 이름: ' + userInfo.name);
-        window.close();
-        
-        // 부모 창 리다이렉트
-        window.opener.location.href = 'mainPage.html';
+    
     })
     .catch(error => {
         console.error('사용자 정보 가져오기 실패:', error);

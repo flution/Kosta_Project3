@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App - Main</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    #messages li {
+      padding: 5px 10px;
+    }
+  </style>
 </head>
 <body>
-    
+  <h1>Real-time Chat</h1>
+  
+  <!-- 채팅 메시지를 표시할 div 요소 -->
+  <div id="chat-box">
+    <ul id="messages"></ul>
+  </div>
+  
+  <!-- 메시지 입력 폼 -->
+  <form action="" onsubmit="return sendMessage()">
+    <input id="message" autocomplete="off" /><button>Send</button>
+  </form>
+
+  <script>
+    const socket = io();
+
+    function sendMessage() {
+      const message = document.getElementById('message').value;
+      socket.emit('chat message', message);
+      document.getElementById('message').value = '';
+      return false;
+    }
+
+    socket.on('chat message', function(msg) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      document.getElementById('messages').appendChild(li);
+    });
+  </script>
 </body>
 </html>
+

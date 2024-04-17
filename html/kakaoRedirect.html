@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Google Redirect</title>
 </head>
 <body>
-    
+    <script type="text/javascript">
+        // URL에서 액세스 토큰 파싱
+        const urlParams = new URLSearchParams(window.location.hash.substring(1));
+        const accessToken = urlParams.get('access_token');
+
+        // 액세스 토큰이 존재하는지 확인하고 출력
+        if (accessToken) {
+            document.body.innerHTML = '<h4>접속토큰:' + accessToken + '</h4>';
+            // 액세스 토큰을 사용하여 추가 작업 수행 가능
+        } else {
+            document.body.innerHTML = '<h4>접속토큰이 없습니다.</h4>';
+        }
+    </script>
 </body>
 </html>
