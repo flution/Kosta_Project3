@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+    <script src="naverLogin.js" defer></script>
+    <script src="kakaoLogin.js" defer></script>
+    <script src="googleLogin.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="./server/main.js" defer></script>
+    <script src="https://kit.fontawesome.com/60df7ed31d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>회원가입</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field" id="namefield">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="이름을 입력하세요.">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="이메일을 입력하세요.">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="패스워드를 입력하세요.">
+                    </div>
+                    <p>비밀번호를 잊어버리셨나요? <a href="#">비밀번호 찾기</a></p>
+                </div>
+                <div class="btn-field">
+                <button type="button" id="signUpBtn" class="disable">회원가입</button>
+                <button type="button" id="signInBtn" >로그인</button>
+                </div>
+            </form>
+            <div class="btns">
+                <!-- 여기에 소셜 로그인 버튼 추가 -->
+                <button class='btn-social-login' style='background:#4285F4' onclick="loginWithGoogle()"><i class="xi-3x xi-google"></i></button>
+                <div id="naverIdLogin"></div>
+                <button class='btn-social-login' style='background:#FFEB00' onclick="loginWithKakao()"><i class="xi-3x xi-kakaotalk text-dark"></i></button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
