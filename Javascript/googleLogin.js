@@ -2,7 +2,7 @@ function loginWithGoogle() {
     // Google 로그인 창을 팝업으로 열기
     window.open('https://accounts.google.com/o/oauth2/auth' +
         '?client_id=184810592518-q1dsp9gb1pqq3g8dmujuo2k3sks81ub2.apps.googleusercontent.com' + // 클라이언트 ID
-        '&redirect_uri=http://127.0.0.1:5500/googleRedirect.html' + // 리다이렉트 URI
+        '&redirect_uri=http://127.0.0.1:5500/html/googleRedirect.html' + // 리다이렉트 URI
         '&response_type=token' +
         '&scope=email profile', // 요청할 권한(scope)
         'google-login', 'width=500, height=600');
@@ -12,6 +12,7 @@ function loginWithGoogle() {
 function handleGoogleLogin() {
     // URL에서 액세스 토큰 파싱
     const urlParams = new URLSearchParams(window.location.hash.substring(1));
+    console.log(window.location.href)
     const accessToken = urlParams.get('access_token');
     console.log('액세스 토큰:', accessToken);
 
@@ -25,6 +26,10 @@ function handleGoogleLogin() {
     .then(userInfo => {
         console.log('사용자 정보:', userInfo);
         alert('구글 로그인 성공!\n사용자 이름: ' + userInfo.name);
+        window.close();
+        
+        // 부모 창 리다이렉트
+        window.opener.location.href = 'mainPage.html';
     })
     .catch(error => {
         console.error('사용자 정보 가져오기 실패:', error);

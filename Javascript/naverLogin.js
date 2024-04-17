@@ -1,6 +1,6 @@
 var naverLogin = new naver.LoginWithNaverId({
     clientId: "CdRZPSjvywZeSCNP6MBF",
-    callbackUrl: "http://127.0.0.1:5500/naverRedirect.html",
+    callbackUrl: "http://127.0.0.1:5500/html/naverRedirect.html",
     loginButton: { color: "green", type: 1, height: 50}
 });
 
@@ -19,6 +19,7 @@ naverLogin.getLoginStatus(function (status) {
             console.log("사용자 이메일:", userProfile.getEmail());
             console.log("프로필 사진 URL:", userProfile.getProfileImage());
         });
+        window.location.href = '/html/mainPage.html'; // 메인 페이지로 이동
     } else {
         console.log("네이버 아이디로 로그인 실패");
     }
