@@ -12,6 +12,8 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
     <body>
+      <button id="enterChatRoom">채팅방 입장하기</button>
+
         <script type="text/javascript">
       var naver_id_login = new naver_id_login("CdRZPSjvywZeSCNP6MBF", "http://127.0.0.1:5500/naverRedirect.html");
     // 접근 토큰 값 출력
@@ -38,6 +40,10 @@
 	body.append('<h4>생일:'+birthday+'</h4>');
 	body.append('<h4>전화번호:'+mobile+'</h4>');
   }
+ 
+  document.getElementById("enterChatRoom").addEventListener("click", function() {
+    window.location.href = "http://localhost:3000/index.html";
+});
 </script>
 </body>
 </html>

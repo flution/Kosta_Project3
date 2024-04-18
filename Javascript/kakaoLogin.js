@@ -57,5 +57,3 @@ function handleKakaoLogin() {
         }
     });
 }
-
-// 페이지 로드 시 호출하여 카카오 로그인 처리
